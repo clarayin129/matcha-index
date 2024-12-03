@@ -12,8 +12,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    powder(id: ID!): Powder
-    powders: [Powder]
+    brand(id: ID!): Brand
+    brands: [Brand]
+    powders: [Powder!]!
   }
 
   type Mutation {

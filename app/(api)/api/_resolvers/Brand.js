@@ -1,20 +1,17 @@
-import Playlists from '../_services/Playlists.js';
-import Users from '../_services/Users.js';
+import Brands from '../_services/Brands.js';
 
 const resolvers = {
-  Playlist: {
-    user: ({ userId }) => Users.find({ id: userId }),
-    songs: ({ id }) => Playlists.getSongs({ id }),
+  Brand: {
+    powders: ({ name }) => Brands.getPowders({ name }),
   },
   Query: {
-    playlist: (_, { id }) => Playlists.find({ id }),
-    playlists: () => Playlists.findAll(),
+    brand: (_, { name }) => Brands.find({ name }),
+    brands: () => Brands.findAll(),
   },
   Mutation: {
-    createPlaylist: (_, { userId, input }) =>
-      Playlists.create({ userId, input }),
-    addSong: (_, { playlistId, songId }) =>
-      Playlists.addSong({ playlistId, songId }),
+    createBrand: (_, { id, input }) => Brands.create({ id, input }),
+    addPowder: (_, { brandId, powderId }) =>
+      Brands.addPowder({ brandId, powderId }),
   },
 };
 export default resolvers;

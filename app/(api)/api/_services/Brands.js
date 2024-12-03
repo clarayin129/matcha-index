@@ -23,12 +23,12 @@ export default class Brands {
   }
 
   // OTHER
-  static async addSong({ playlistId, songId }) {
+  static async addPowder({ brandId, powderId }) {
     try {
-      await prisma.playlistToSong.create({
+      await prisma.brand.create({
         data: {
-          playlistId,
-          songId,
+          brandId,
+          powderId,
         },
       });
       return true;
@@ -37,23 +37,23 @@ export default class Brands {
     }
   }
 
-  static async getSongs({ id }) {
-    const songIds = await prisma.playlistToSong.findMany({
+  static async getPowders({ id }) {
+    const powderIds = await prisma.powder.findMany({
       where: {
-        playlistId: id,
+        brandId: id,
       },
       select: {
-        songId: true,
+        powderId: true,
       },
     });
-    const songs = await prisma.song.findMany({
+    const powders = await prisma.song.findMany({
       where: {
         id: {
-          in: songIds.map((obj) => obj.songId),
+          in: powderIds.map((obj) => obj.songId),
         },
       },
     });
 
-    return songs;
+    return powders;
   }
 }

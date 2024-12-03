@@ -4,8 +4,9 @@ const typeDefs = gql`
   type Powder {
     id: ID!
     name: String!
-    brand: Brand
-    strength: String
+    brand: Brand!
+    strength: String!
+    pricePerGram: float
   }
 
   input PowderInput {
@@ -14,6 +15,7 @@ const typeDefs = gql`
 
   type Query {
     brand(id: ID!): Brand
+    powders: [Powder!]!
     strength: String
   }
 

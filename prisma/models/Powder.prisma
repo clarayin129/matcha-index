@@ -1,0 +1,7 @@
+model Powder {
+  id       String  @id @default(uuid())
+  name     String
+  brand    Brand @relation(fields: [brandId], references: [id])
+  brandId  String
+  strength String
+}
