@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Brand {
     id: ID!
     name: String!
-    powders: [Powder]
+    powders: [Powder!]!
   }
 
   input BrandInput {

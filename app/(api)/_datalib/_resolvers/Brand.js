@@ -1,4 +1,4 @@
-import Brands from '../../../api/_services/Brands.js';
+import Brands from '../_services/Brands.js';
 
 const resolvers = {
   Brand: {

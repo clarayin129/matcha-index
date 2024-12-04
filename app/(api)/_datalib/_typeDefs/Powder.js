@@ -6,7 +6,8 @@ const typeDefs = gql`
     name: String!
     brand: Brand!
     strength: String!
-    pricePerGram: float
+    usage: [String]
+    pricePerGram: Float
   }
 
   input PowderInput {
@@ -17,6 +18,8 @@ const typeDefs = gql`
     brand(id: ID!): Brand
     powders: [Powder!]!
     strength: String
+    usage: [String]
+    pricePerGram: Float
   }
 
   type Mutation {

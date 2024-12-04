@@ -1,5 +1,5 @@
-import Playlists from '../../../api/_services/Playlists.js';
-import Users from '../../../api/_services/Users.js';
+import Playlists from '../_services/Playlists.js';
+import Users from '../_services/Users.js';
 
 const resolvers = {
   Playlist: {
