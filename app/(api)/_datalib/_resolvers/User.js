@@ -1,4 +1,4 @@
-import Users from '../_services/Users.js';
+import Users from '../../api/_services/Users.js';
 
 const resolvers = {
   User: {

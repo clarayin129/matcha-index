@@ -1,4 +1,4 @@
-import prisma from '../_prisma/client.js';
+import prisma from '../../_datalib/_prisma/client.js';
 
 export default class Users {
   // CREATE
