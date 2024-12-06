@@ -14,8 +14,8 @@ export default class Brands {
   }
 
   // READ
-  static async find({ id }) {
-    return prisma.brand.findUnique({ where: { id } });
+  static async findByName({ name }) {
+    return prisma.brand.findUnique({ where: { name } });
   }
 
   static async findAll() {

@@ -12,7 +12,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    brand(id: ID!): Brand
+    brand(name: String!): Brand
     brands: [Brand]
     powders: [Powder!]!
   }

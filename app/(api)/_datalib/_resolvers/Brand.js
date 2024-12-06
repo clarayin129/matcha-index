@@ -5,7 +5,7 @@ const resolvers = {
     powders: ({ name }) => Brands.getPowders({ name }),
   },
   Query: {
-    brand: (_, { name }) => Brands.find({ name }),
+    brand: (_, { name }) => Brands.findByName({ name }),
     brands: () => Brands.findAll(),
   },
   Mutation: {

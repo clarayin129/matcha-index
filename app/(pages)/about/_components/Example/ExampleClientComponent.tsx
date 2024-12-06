@@ -6,16 +6,20 @@ import { useState } from 'react';
 import sendApolloRequest from '@utils/sendApolloRequest';
 
 const query = gql`
-  query BrandQuery($brandId: ID!) {
-    brand(id: $brandId) {
-      name
+  query BrandQuery($name: String!, $brandId: ID!) {
+    brand(name: $name, id: $brandId) {
+      id
+      powders {
+        pricePerGram
+      }
     }
   }
 `;
 
 // Example IDs
 const variable = {
-  brandId: '1',
+  name: 'Ippodo',
+  brandId: 'fab09737-46fe-4791-bcbe-e0cc35b9e0ca',
 };
 
 export default function ExampleClientComponent() {
@@ -23,6 +27,7 @@ export default function ExampleClientComponent() {
 
   const handleRequest = async () => {
     const res = await sendApolloRequest(query, variable);
+    console.log('ID being queried:', variable.name);
     setUsers(res);
   };
 

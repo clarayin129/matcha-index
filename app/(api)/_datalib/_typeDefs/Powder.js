@@ -15,8 +15,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    brand(id: ID!): Brand
+    powder(name: String!): Powder
     powders: [Powder!]!
+    brand(id: ID!): Brand
     strength: String
     usage: [String]
     pricePerGram: Float
