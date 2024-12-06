@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import Brands from '../_services/Brands.js';
 
 const resolvers = {
@@ -5,6 +6,7 @@ const resolvers = {
     powders: ({ name }) => Brands.getPowders({ name }),
   },
   Query: {
+    brand: (_, { id }) => Brands.findById({ id }),
     brand: (_, { name }) => Brands.findByName({ name }),
     brands: () => Brands.findAll(),
   },

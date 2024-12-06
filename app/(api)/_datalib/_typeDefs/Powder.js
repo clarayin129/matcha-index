@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Powder {
     id: ID!
     name: String!
-    brand: Brand!
+    brand: Brand
     strength: String!
     usage: [String]
     pricePerGram: Float

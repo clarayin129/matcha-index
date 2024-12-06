@@ -18,6 +18,15 @@ export default class Brands {
     return prisma.brand.findUnique({ where: { name } });
   }
 
+  static async findById({ id }) {
+    return prisma.brand.findUnique({
+      where: { id },
+      select: {
+        name: true,
+      },
+    });
+  }
+
   static async findAll() {
     return prisma.brand.findMany();
   }
@@ -37,12 +46,10 @@ export default class Brands {
     }
   }
 
-  static async getPowders({ name }) {
+  static async getPowders({ id }) {
     const powders = await prisma.powder.findMany({
       where: {
-        brand: {
-          name: name,
-        },
+        brandId: id,
       },
     });
     return powders;
