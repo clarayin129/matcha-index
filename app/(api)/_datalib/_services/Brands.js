@@ -37,23 +37,14 @@ export default class Brands {
     }
   }
 
-  static async getPowders({ id }) {
-    const powderIds = await prisma.powder.findMany({
+  static async getPowders({ name }) {
+    const powders = await prisma.powder.findMany({
       where: {
-        brandId: id,
-      },
-      select: {
-        powderId: true,
-      },
-    });
-    const powders = await prisma.song.findMany({
-      where: {
-        id: {
-          in: powderIds.map((obj) => obj.songId),
+        brand: {
+          name: name,
         },
       },
     });
-
     return powders;
   }
 }

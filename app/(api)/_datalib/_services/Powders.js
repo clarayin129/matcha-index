@@ -13,8 +13,8 @@ export default class Powders {
   }
 
   // READ
-  static async find({ id }) {
-    return prisma.powder.findUnique({ where: { id } });
+  static async find({ name }) {
+    return prisma.powder.findUnique({ where: { name } });
   }
 
   static async findAll() {

@@ -2,7 +2,7 @@ import Powders from '../_services/Powders.js';
 
 const resolvers = {
   Query: {
-    powder: (_, { id }) => Powders.find({ id }),
+    powder: (_, { name }) => Powders.find({ name }),
     powders: () => Powders.findAll(),
   },
   Mutation: {

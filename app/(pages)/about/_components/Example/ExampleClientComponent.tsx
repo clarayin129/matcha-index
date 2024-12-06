@@ -6,12 +6,9 @@ import { useState } from 'react';
 import sendApolloRequest from '@utils/sendApolloRequest';
 
 const query = gql`
-  query BrandQuery($name: String!, $brandId: ID!) {
-    brand(name: $name, id: $brandId) {
+  query BrandQuery($name: String!) {
+    brand(name: $name) {
       id
-      powders {
-        pricePerGram
-      }
     }
   }
 `;
@@ -19,7 +16,6 @@ const query = gql`
 // Example IDs
 const variable = {
   name: 'Ippodo',
-  brandId: 'fab09737-46fe-4791-bcbe-e0cc35b9e0ca',
 };
 
 export default function ExampleClientComponent() {

@@ -8,54 +8,52 @@ datasource db {
 }
 
 model Brand {
-  id      String   @id @default(uuid())
-  name    String   @unique
-  powders Powder[]
+  id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name String @unique
 }
 
 model Powder {
-  id           String  @id @default(uuid())
-  name         String
-  brand        Brand   @relation(fields: [brandId], references: [id])
-  brandId      String
+  id           String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name         String   @unique
+  brandId      String   @db.Uuid
   strength     String
+  pricePerGram Float
   usage        String[]
-  pricePerGram Float?
 }
 
 model Playlist {
   id        String           @id @default(uuid())
   name      String
-  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
-  songs     PlaylistToSong[]
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  songs     PlaylistToSong[]
 }
 
 model PlaylistToSong {
   playlistId String
-  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
   songId     String
-  song       Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  song       Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
 
-  @@id(name: "id", fields: [playlistId, songId])
+  @@id([playlistId, songId], name: "id")
 }
 
 model Song {
   id        String           @id @default(uuid())
   name      String
-  playlists PlaylistToSong[]
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt
+  playlists PlaylistToSong[]
 }
 
 model User {
   id        String     @id @default(uuid())
   name      String
-  playlists Playlist[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
+  playlists Playlist[]
 }
