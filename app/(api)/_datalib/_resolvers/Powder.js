@@ -8,15 +8,11 @@ const resolvers = {
       if (brand) {
         return { name: brand.name };
       }
-      throw new Error('Brand not found'); // You can also handle the error differently depending on your use case
     },
   },
   Query: {
     powder: (_, { name }) => Powders.find({ name }),
     powders: () => Powders.findAll(),
-  },
-  Mutation: {
-    createPowder: (_, { input }) => Powders.create({ input }),
   },
 };
 export default resolvers;

@@ -7,20 +7,11 @@ const typeDefs = gql`
     powders: [Powder!]!
   }
 
-  input BrandInput {
-    name: String!
-  }
-
   type Query {
     brand(name: String!): Brand
     brand(id: String!): Brand
     brands: [Brand]
     powders: [Powder!]!
-  }
-
-  type Mutation {
-    createBrand(id: ID!, input: BrandInput!): Brand
-    addPowder(brandId: ID!, powderId: ID!): Boolean
   }
 `;
 export default typeDefs;

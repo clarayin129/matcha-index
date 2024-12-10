@@ -3,20 +3,19 @@ import { gql } from 'graphql-tag';
 import sendApolloRequest from '@utils/sendApolloRequest';
 
 const query = gql`
-  query UserQuery($ids: [ID]!) {
-    users(ids: $ids) {
-      name
+  query BrandPowdersQuery($name: String!, $brandId: ID!) {
+    brand(name: $name, id: $brandId) {
+      powders {
+        name
+      }
     }
   }
 `;
 
 // Example IDs
 const variables = {
-  ids: [
-    '7bae85c0-7862-4d8e-b991-41c73d51936d',
-    '9e327de1-38f1-4324-9427-48ec9a670ca3',
-    '47ca283a-2178-4760-814f-7f847f580af3',
-  ],
+  name: 'Ippodo',
+  brandId: 'c0dff35b-b575-4e9e-ae2a-03df5092aa3f',
 };
 
 export default async function ExampleServerComponent() {

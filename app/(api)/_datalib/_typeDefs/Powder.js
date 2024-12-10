@@ -10,10 +10,6 @@ const typeDefs = gql`
     pricePerGram: Float
   }
 
-  input PowderInput {
-    name: String!
-  }
-
   type Query {
     powder(name: String!): Powder
     powders: [Powder!]!
@@ -21,10 +17,6 @@ const typeDefs = gql`
     strength: String
     usage: [String]
     pricePerGram: Float
-  }
-
-  type Mutation {
-    createPowder(input: PowderInput!): Powder
   }
 `;
 export default typeDefs;

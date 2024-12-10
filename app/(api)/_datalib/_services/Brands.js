@@ -31,21 +31,6 @@ export default class Brands {
     return prisma.brand.findMany();
   }
 
-  // OTHER
-  static async addPowder({ brandId, powderId }) {
-    try {
-      await prisma.brand.create({
-        data: {
-          brandId,
-          powderId,
-        },
-      });
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
   static async getPowders({ name }) {
     const brand = await prisma.brand.findUnique({
       where: {
