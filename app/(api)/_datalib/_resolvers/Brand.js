@@ -6,8 +6,14 @@ const resolvers = {
     powders: ({ name }) => Brands.getPowders({ name }),
   },
   Query: {
-    brand: (_, { id }) => Brands.findById({ id }),
-    brand: (_, { name }) => Brands.findByName({ name }),
+    brand: (_, args) => {
+      if (args.id) {
+        return Brands.findById({ id: args.id });
+      }
+      if (args.name) {
+        return Brands.findByName({ name: args.name });
+      }
+    },
     brands: () => Brands.findAll(),
   },
   Mutation: {

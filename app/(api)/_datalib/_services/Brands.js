@@ -46,12 +46,19 @@ export default class Brands {
     }
   }
 
-  static async getPowders({ id }) {
-    const powders = await prisma.powder.findMany({
+  static async getPowders({ name }) {
+    const brand = await prisma.brand.findUnique({
       where: {
-        brandId: id,
+        name,
       },
     });
+
+    const powders = await prisma.powder.findMany({
+      where: {
+        brandId: brand.id,
+      },
+    });
+
     return powders;
   }
 }
