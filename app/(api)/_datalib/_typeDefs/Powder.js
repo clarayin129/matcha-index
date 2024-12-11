@@ -10,7 +10,15 @@ const typeDefs = gql`
     pricePerGram: Float
   }
 
+  input PowderFilterInput {
+    strength: String
+    usage: [String]
+    priceMin: Float
+    priceMax: Float
+  }
+
   type Query {
+    powders(filter: PowderFilterInput): [Powder!]!
     powder(name: String!): Powder
     powders: [Powder!]!
     brand(id: ID!): Brand

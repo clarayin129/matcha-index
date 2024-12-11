@@ -12,7 +12,12 @@ const resolvers = {
   },
   Query: {
     powder: (_, { name }) => Powders.find({ name }),
-    powders: () => Powders.findAll(),
+    powders: async (_, args) => {
+      if (args.filter) {
+        return await Powders.findByFilter(args.filter);
+      }
+      return Powders.findAll();
+    },
   },
 };
 export default resolvers;

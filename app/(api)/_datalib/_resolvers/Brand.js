@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 import Brands from '../_services/Brands.js';
 
 const resolvers = {
