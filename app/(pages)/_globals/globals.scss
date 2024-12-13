@@ -2,15 +2,15 @@
 
 :root {
     /* variables */
-    --include-purple: #3c257e;
+    --base-green: #559575;
 
-    --primary: var(--include-purple);
-    --secondary: #e7c6f9;
-    --light-background: rgb(241, 240, 240);
-    --dark-background: #0d303b;
+    --primary: var(--base-green);
+    --secondary: #99D3B7;
+    --light-background: #CEE4D7;
+    --dark-background: #559575;
 
-    --text-dark: #0d303b;
-    --text-light: #def6ff;
+    --text-dark: #1D623F;
+    --text-light: #C3F2D5;
 
     /* spacers */
     --tiny-spacer: 8px;
@@ -32,7 +32,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--font-inter);
+  font-family: var(--font-roboto);
   color: var(--text-dark);
 }
 

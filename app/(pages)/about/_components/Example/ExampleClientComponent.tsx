@@ -26,14 +26,14 @@ export default function ExampleClientComponent() {
 
   const handleRequest = async () => {
     const res = await sendApolloRequest(query, variable);
-    console.log('ID being queried:', variable.name);
+    console.log('Brand whose powders are being queried:', variable.name);
     setUsers(res);
   };
 
   return (
     <div>
       <h1>Client Component</h1>
-      <button onClick={handleRequest}>Button</button>
+      <button onClick={handleRequest}> Yay button </button>
       <pre>{JSON.stringify(users, null, 2)}</pre>
     </div>
   );
