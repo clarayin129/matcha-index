@@ -10,12 +10,14 @@ datasource db {
 model Brand {
   id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name String @unique
+  powders Powder[] @relation(name: "BrandToPowder")
 }
 
 model Powder {
   id           String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name         String   @unique
   brandId      String   @db.Uuid
+  brand        Brand    @relation(name: "BrandToPowder", fields: [brandId], references: [id])
   strength     String
   pricePerGram Float
   usage        String[]

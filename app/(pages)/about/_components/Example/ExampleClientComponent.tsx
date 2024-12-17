@@ -22,19 +22,18 @@ const variable = {
 };
 
 export default function ExampleClientComponent() {
-  const [users, setUsers] = useState(null);
+  const [powders, setPowders] = useState(null);
 
   const handleRequest = async () => {
     const res = await sendApolloRequest(query, variable);
-    console.log('Brand whose powders are being queried:', variable.name);
-    setUsers(res);
+    setPowders(res);
   };
 
   return (
     <div>
       <h1>Client Component</h1>
       <button onClick={handleRequest}> Yay button </button>
-      <pre>{JSON.stringify(users, null, 2)}</pre>
+      <pre>{JSON.stringify(powders, null, 2)}</pre>
     </div>
   );
 }
