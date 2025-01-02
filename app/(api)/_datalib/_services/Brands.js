@@ -1,19 +1,6 @@
 import prisma from '../_prisma/client.js';
 
 export default class Brands {
-  // CREATE
-  static async create({ id, input }) {
-    const { name } = input;
-    const brand = await prisma.brand.create({
-      data: {
-        id,
-        name,
-      },
-    });
-    return brand;
-  }
-
-  // READ
   static async findByName({ name }) {
     return prisma.brand.findUnique({ where: { name } });
   }

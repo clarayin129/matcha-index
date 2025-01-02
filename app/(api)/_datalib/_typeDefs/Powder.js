@@ -8,6 +8,7 @@ const typeDefs = gql`
     strength: String!
     usage: [String]
     pricePerGram: Float
+    reviews: [Review]
   }
 
   input PowderFilterInput {
@@ -25,6 +26,10 @@ const typeDefs = gql`
     strength: String
     usage: [String]
     pricePerGram: Float
+  }
+
+  type Mutation {
+    addReview(powderId: ID!, reviewId: ID!): Boolean
   }
 `;
 export default typeDefs;

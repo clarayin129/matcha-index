@@ -10,52 +10,50 @@ datasource db {
 model Brand {
   id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name String @unique
-  powders Powder[] @relation(name: "BrandToPowder")
 }
 
 model Powder {
   id           String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   name         String   @unique
   brandId      String   @db.Uuid
-  brand        Brand    @relation(name: "BrandToPowder", fields: [brandId], references: [id])
   strength     String
   pricePerGram Float
   usage        String[]
 }
 
 model Playlist {
-  id        String           @id @default(uuid())
-  name      String
-  userId    String
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  songs     PlaylistToSong[]
+  id             String           @id
+  name           String
+  userId         String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  User           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  PlaylistToSong PlaylistToSong[]
 }
 
 model PlaylistToSong {
   playlistId String
   songId     String
   createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
-  song       Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
+  updatedAt  DateTime
+  Playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  Song       Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
 
-  @@id([playlistId, songId], name: "id")
+  @@id([playlistId, songId])
 }
 
 model Song {
-  id        String           @id @default(uuid())
-  name      String
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  playlists PlaylistToSong[]
+  id             String           @id
+  name           String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  PlaylistToSong PlaylistToSong[]
 }
 
 model User {
-  id        String     @id @default(uuid())
+  id        String     @id
   name      String
   createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  playlists Playlist[]
+  updatedAt DateTime
+  Playlist  Playlist[]
 }

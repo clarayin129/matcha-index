@@ -1,7 +1,6 @@
 import prisma from '../_prisma/client.js';
 
 export default class Powders {
-  // READ
   static async findPowder({ name }) {
     return prisma.powder.findUnique({ where: { name } });
   }
