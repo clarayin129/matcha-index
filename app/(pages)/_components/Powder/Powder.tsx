@@ -7,6 +7,7 @@ export type PowderProps = {
   strength: string;
   pricePerGram: number;
   usage: string[];
+  brand: { name: string };
 };
 
 const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
@@ -14,12 +15,15 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
     <div className={styles.card}>
       <div className={styles.container}>
         <h3>{powder.name}</h3>
-        <p> Strength: {powder.strength} </p>
+        <p>
+          <strong>Brand:</strong> {powder.brand.name}{' '}
+        </p>
+        <p>Strength: {powder.strength}</p>
         <p>
           <strong>Price Per Gram:</strong> ${powder.pricePerGram.toFixed(2)}
         </p>
         <p>
-          <strong>Usage:</strong> {powder.usage.join(' ')}
+          <strong>Usage:</strong> {powder.usage.join(', ')}
         </p>
       </div>
     </div>

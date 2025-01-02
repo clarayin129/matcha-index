@@ -10,6 +10,9 @@ const query = gql`
       strength
       pricePerGram
       usage
+      brand {
+        name
+      }
     }
   }
 `;

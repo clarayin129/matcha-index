@@ -26,8 +26,9 @@ const MatchaSearch: React.FC<MatchaSearchProps> = ({ initialPowders }) => {
           u.toLowerCase().includes(term)
         );
         const matchesStrength = powder.strength.toLowerCase().includes(term);
+        const matchesBrand = powder.brand.name.toLowerCase().includes(term);
 
-        return matchesName || matchesUsage || matchesStrength;
+        return matchesName || matchesUsage || matchesStrength || matchesBrand;
       });
 
       setFilteredPowders(filtered);
