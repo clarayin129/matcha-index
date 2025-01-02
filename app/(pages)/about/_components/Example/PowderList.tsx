@@ -1,9 +1,10 @@
 import React from 'react';
 import Powder, { PowderProps } from '../../../_components/Powder/Powder';
+import styles from './PowderList.module.scss';
 
 const PowderList: React.FC<{ powders: PowderProps[] }> = ({ powders }) => {
   return (
-    <div>
+    <div className={styles.container}>
       {powders.map((powder) => (
         <Powder key={powder.id} powder={powder} />
       ))}

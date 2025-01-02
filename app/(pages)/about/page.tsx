@@ -26,6 +26,8 @@ export default function Example() {
 
   return (
     <main>
+      <h1> Powders </h1>
+      <p>All Powders</p>
       <PowderList powders={powders} /> {/* Pass the array directly here */}
     </main>
   );

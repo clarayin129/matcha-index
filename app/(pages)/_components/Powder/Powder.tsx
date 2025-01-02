@@ -14,9 +14,7 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
     <div className={styles.card}>
       <div className={styles.container}>
         <h3>{powder.name}</h3>
-        <p>
-          <strong>Strength:</strong> {powder.strength}
-        </p>
+        <p> Strength: {powder.strength} </p>
         <p>
           <strong>Price Per Gram:</strong> ${powder.pricePerGram.toFixed(2)}
         </p>
