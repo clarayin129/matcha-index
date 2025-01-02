@@ -19,7 +19,7 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
           <strong>Price Per Gram:</strong> ${powder.pricePerGram.toFixed(2)}
         </p>
         <p>
-          <strong>Usage:</strong> {powder.usage.join('')}
+          <strong>Usage:</strong> {powder.usage.join(' ')}
         </p>
       </div>
     </div>

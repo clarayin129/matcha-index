@@ -1,7 +1,6 @@
-import PowderList from './_components/Example/PowderList';
 import { gql } from 'graphql-tag';
 import sendApolloRequest from '@utils/sendApolloRequest';
-import { use } from 'react';
+import MatchaSearch from './_components/Example/PowderSearch';
 
 const query = gql`
   query GetAllPowders {
@@ -15,20 +14,18 @@ const query = gql`
   }
 `;
 
-// server-side default
 const fetchPowders = async () => {
   const { data } = await sendApolloRequest(query, {});
   return data?.powders || [];
 };
 
-export default function Example() {
-  const powders = use(fetchPowders());
+export default async function Example() {
+  const powders = await fetchPowders();
 
   return (
     <main>
-      <h1> Powders </h1>
-      <p>All Powders</p>
-      <PowderList powders={powders} /> {/* Pass the array directly here */}
+      <h1>Powder List</h1>
+      <MatchaSearch initialPowders={powders} />
     </main>
   );
 }
