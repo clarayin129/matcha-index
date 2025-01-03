@@ -7,17 +7,3 @@
 */
 -- AlterTable
 ALTER TABLE "Powder" ALTER COLUMN "pricePerGram" SET NOT NULL;
-
--- CreateIndex
-CREATE UNIQUE INDEX "Powder_name_key" ON "Powder"("name");
-
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
-ALTER TABLE "Brand"
-ALTER COLUMN "id" TYPE UUID USING "id"::UUID,
-ALTER COLUMN "id" SET DEFAULT uuid_generate_v4();
-
-ALTER TABLE "Powder"
-ALTER COLUMN "id" TYPE UUID USING "id"::UUID,
-ALTER COLUMN "id" SET DEFAULT uuid_generate_v4();
-ALTER COLUMN "brandId" TYPE UUID USING "brandId"::UUID;

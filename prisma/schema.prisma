@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Brand {
-  id   String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name String @unique
 }
 
 model Powder {
-  id           String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name         String   @unique
   brandId      String   @db.Uuid
   strength     String
@@ -21,39 +21,10 @@ model Powder {
   usage        String[]
 }
 
-model Playlist {
-  id             String           @id
-  name           String
-  userId         String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime
-  User           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  PlaylistToSong PlaylistToSong[]
-}
-
-model PlaylistToSong {
-  playlistId String
-  songId     String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime
-  Playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
-  Song       Song     @relation(fields: [songId], references: [id], onDelete: Cascade)
-
-  @@id([playlistId, songId])
-}
-
-model Song {
-  id             String           @id
-  name           String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime
-  PlaylistToSong PlaylistToSong[]
-}
-
-model User {
-  id        String     @id
-  name      String
-  createdAt DateTime   @default(now())
-  updatedAt DateTime
-  Playlist  Playlist[]
+model Review {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user         String   
+  text         String   
+  rating       Int
+  powderId     String   @db.Uuid
 }
