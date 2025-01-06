@@ -1,9 +1,9 @@
 import { gql } from 'graphql-tag';
 import sendApolloRequest from '@utils/sendApolloRequest';
-import MatchaSearch from './_components/Example/PowderSearch';
+import PowderSearch from './_components/Example/PowderSearch';
 
 const query = gql`
-  query GetAllPowders {
+  query getAllPowders {
     powders {
       id
       name
@@ -12,6 +12,12 @@ const query = gql`
       usage
       brand {
         name
+      }
+      reviews {
+        id
+        rating
+        text
+        user
       }
     }
   }
@@ -28,7 +34,7 @@ export default async function Example() {
   return (
     <main>
       <h1>Powder List</h1>
-      <MatchaSearch initialPowders={powders} />
+      <PowderSearch initialPowders={powders} />
     </main>
   );
 }

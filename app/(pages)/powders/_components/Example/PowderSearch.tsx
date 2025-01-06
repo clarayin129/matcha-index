@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import Powder, { PowderProps } from '../../../_components/Powder/Powder';
 import styles from './PowderSearch.module.scss';
 
-interface MatchaSearchProps {
+interface PowderSearchProps {
   initialPowders: PowderProps[];
 }
 
-const MatchaSearch: React.FC<MatchaSearchProps> = ({ initialPowders }) => {
+const PowderSearch: React.FC<PowderSearchProps> = ({ initialPowders }) => {
   const [filteredPowders, setFilteredPowders] =
     useState<PowderProps[]>(initialPowders);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -53,4 +53,4 @@ const MatchaSearch: React.FC<MatchaSearchProps> = ({ initialPowders }) => {
   );
 };
 
-export default MatchaSearch;
+export default PowderSearch;

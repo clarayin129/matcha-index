@@ -1,8 +1,11 @@
 import prisma from '../_prisma/client.js';
 
 export default class Powders {
-  static async findPowder({ name }) {
-    return prisma.powder.findUnique({ where: { name } });
+  static async find({ name }) {
+    return await prisma.powder.findUnique({
+      where: { name: name },
+      include: { reviews: true },
+    });
   }
 
   static async findAll() {
@@ -15,6 +18,7 @@ export default class Powders {
           pricePerGram: 'asc',
         },
       ],
+      include: { reviews: true },
     });
   }
 

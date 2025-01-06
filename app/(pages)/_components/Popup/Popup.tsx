@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Popup.module.scss';
-import { PowderProps } from '../Powder/Powder';
+import { PowderProps, Review } from '../Powder/Powder';
 
 type PopupProps = {
   isOpen: boolean;
@@ -9,7 +9,13 @@ type PopupProps = {
 };
 
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
-  const reviews = powder?.reviews || [];
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    if (powder && powder.reviews) {
+      setReviews(powder.reviews);
+    }
+  }, [powder]);
 
   if (!isOpen || !powder) return null;
 
