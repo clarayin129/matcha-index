@@ -8,6 +8,7 @@ const typeDefs = gql`
     strength: String!
     usage: [String]
     pricePerGram: Float
+    description: String
     reviews: [Review]
   }
 

@@ -11,6 +11,7 @@ const query = gql`
       strength
       pricePerGram
       usage
+      description
       brand {
         name
       }

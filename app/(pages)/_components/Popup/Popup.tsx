@@ -70,6 +70,9 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
         <p>Price Per Gram: ${powder.pricePerGram.toFixed(2)}</p>
         <p>Usage: {powder.usage.join(', ')}</p>
 
+        <h4>{powder.brand.name} says:</h4>
+        <p>{powder.description}</p>
+
         <h4>Reviews:</h4>
         {reviews.length > 0 ? (
           reviews.map((review) => (

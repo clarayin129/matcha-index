@@ -20,6 +20,7 @@ model Powder {
   brand        Brand    @relation(fields:[brandId], references:[id])
   strength     String
   pricePerGram Float
+  description  String   @default(" ")
   usage        String[]
   reviews      Review[]
 }

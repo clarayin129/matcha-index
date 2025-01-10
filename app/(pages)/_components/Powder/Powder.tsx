@@ -17,6 +17,7 @@ export type PowderProps = {
   usage: string[];
   brand: { name: string };
   reviews?: Review[];
+  description: string;
 };
 
 const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
