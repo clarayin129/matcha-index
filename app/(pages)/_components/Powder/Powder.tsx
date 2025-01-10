@@ -33,18 +33,16 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
   return (
     <div>
       <div className={styles.card} onClick={handleCardClick}>
-        <div className={styles.container}>
+        <div className={styles.cardContainer}>
+          <div className={styles.brandTag}>{powder.brand.name} </div>
           <h3>{powder.name}</h3>
-          <p>
-            <strong>Brand:</strong> {powder.brand.name}{' '}
-          </p>
-          <p>Strength: {powder.strength}</p>
-          <p>
-            <strong>Price Per Gram:</strong> ${powder.pricePerGram.toFixed(2)}
-          </p>
-          <p>
-            <strong>Usage:</strong> {powder.usage.join(', ')}
-          </p>
+          <div className={styles.tagContainer}>
+            <div className={styles.infoTag}>{powder.strength}</div>
+            <div className={styles.infoTag}>
+              ${powder.pricePerGram.toFixed(2)}/g
+            </div>
+            <div className={styles.infoTag}> {powder.usage.join(', ')} </div>
+          </div>
         </div>
       </div>
 

@@ -10,6 +10,7 @@
    justify-content: center;
    align-items: center;
    padding: 16px;
+   text-align: center;
 }
   
   .card:hover {
@@ -21,4 +22,34 @@
   width: 50vw;
   height: 80vh;
   border-radius: 20%;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.brandTag {
+  border-radius: 25px;
+  color: white;
+  background-color: var(--base-green);
+  padding: 8px 16px;
+}
+
+.infoTag {
+  border-radius: 25px;
+  color: white;
+  background-color: var(--med-blue);
+  padding: 8px 16px;
+}
+
+.tagContainer {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
