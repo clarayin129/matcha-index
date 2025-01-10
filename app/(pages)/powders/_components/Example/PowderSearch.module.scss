@@ -3,7 +3,10 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    min-width: 80vw;
     min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
@@ -12,6 +15,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    min-height: 200px; /* Prevent collapse */
 }
 
 .search {
@@ -19,5 +23,8 @@
     margin-bottom: 5rem;
     border-radius: 10px;
     border: 1px solid #ccc;
-    min-width: 80%;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
 }
