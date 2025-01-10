@@ -1,6 +1,7 @@
 import { gql } from 'graphql-tag';
 import sendApolloRequest from '@utils/sendApolloRequest';
 import PowderSearch from './_components/Example/PowderSearch';
+import styles from './page.module.scss';
 
 const query = gql`
   query getAllPowders {
@@ -33,8 +34,9 @@ export default async function Example() {
 
   return (
     <main>
-      <h1>Powder List</h1>
-      <PowderSearch initialPowders={powders} />
+      <div className={styles.body}>
+        <PowderSearch initialPowders={powders} />
+      </div>
     </main>
   );
 }

@@ -36,7 +36,7 @@ const PowderSearch: React.FC<PowderSearchProps> = ({ initialPowders }) => {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <input
         type="text"
         placeholder="Search powders..."

@@ -1,13 +1,17 @@
-.container {
+.body {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: flex-start;
-    padding: 5%;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.powder {
-    margin: 20px;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .search {
@@ -15,5 +19,5 @@
     margin-bottom: 5rem;
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 80%;
+    min-width: 80%;
 }
