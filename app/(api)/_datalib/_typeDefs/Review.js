@@ -16,7 +16,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createReview(input: ReviewInput): Review
+    createReview(powderId: ID!, input: ReviewInput!): Review
   }
 `;
 export default typeDefs;

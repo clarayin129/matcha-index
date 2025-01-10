@@ -1,6 +1,6 @@
 import Powders from '../_services/Powders.js';
 import Brands from '../_services/Brands.js';
-import reviews from '../_services/Reviews.js';
+import Reviews from '../_services/Reviews.js';
 
 const resolvers = {
   Powder: {
@@ -9,9 +9,10 @@ const resolvers = {
       if (brand) {
         return { name: brand.name };
       }
+      return null;
     },
     reviews: ({ id }) => {
-      return reviews.findReviews({ powderId: id });
+      return Reviews.findReviews({ powderId: id });
     },
   },
   Query: {
@@ -23,5 +24,10 @@ const resolvers = {
       return Powders.findAll();
     },
   },
+  Mutation: {
+    addReview: async (_, { powderId, input }) =>
+      Reviews.createReview({ powderId, input }),
+  },
 };
+
 export default resolvers;

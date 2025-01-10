@@ -18,6 +18,12 @@ const typeDefs = gql`
     priceMax: Float
   }
 
+  input ReviewInput {
+    user: String!
+    text: String!
+    rating: Int!
+  }
+
   type Query {
     powders(filter: PowderFilterInput): [Powder!]!
     powder(name: String!): Powder
@@ -29,7 +35,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addReview(powderId: ID!, reviewId: ID!): Boolean
+    addReview(powderId: ID!, input: ReviewInput!): Review
   }
 `;
 export default typeDefs;
