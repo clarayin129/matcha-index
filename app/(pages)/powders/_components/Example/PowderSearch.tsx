@@ -37,6 +37,7 @@ const PowderSearch: React.FC<PowderSearchProps> = ({ initialPowders }) => {
 
   return (
     <div className={styles.body}>
+      <h2 className={'headText'}>powder search</h2>
       <input
         type="text"
         placeholder="Search powders..."
@@ -44,7 +45,25 @@ const PowderSearch: React.FC<PowderSearchProps> = ({ initialPowders }) => {
         onChange={handleSearch}
         className={styles.search}
       />
-      <div className={styles.container}>
+
+      <div>search by:</div>
+
+      <div className={styles.infoContainer}>
+        <div className={styles.infoLine}>
+          <div className={'brandTag'}>Brand</div>
+          <p>Marukyu Koyamaen, Ippodo</p>
+        </div>
+        <div className={styles.infoLine}>
+          <div className={'infoTag'}>Strength</div>
+          <p>Light, Medium, Rich</p>
+        </div>
+        <div className={styles.infoLine}>
+          <div className={'infoTag'}>Usage</div>
+          <p>Latte, Usucha, Koicha</p>
+        </div>
+      </div>
+
+      <div className={styles.powderContainer}>
         {filteredPowders.map((powder) => (
           <Powder key={powder.id} powder={powder} />
         ))}
