@@ -61,74 +61,89 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.popup}>
-        <button onClick={onClose} className={styles.closeButton}>
-          X
-        </button>
-        <h3>{powder.name}</h3>
-        <p>Brand: {powder.brand.name}</p>
-        <p>Strength: {powder.strength}</p>
-        <p>Price Per Gram: ${powder.pricePerGram.toFixed(2)}</p>
-        <p>Usage: {powder.usage.join(', ')}</p>
+        <div className={styles.top}>
+          <h3 className={'headText'}>{powder.name}</h3>
+          <button onClick={onClose} className={styles.closeButton}>
+            X
+          </button>
+        </div>
+        <div className={styles.tagContainer}>
+          <div className={'brandTag'}>{powder.brand.name}</div>
+          <div className={'infoTag'}>{powder.strength}</div>
+          <div className={'infoTag'}>${powder.pricePerGram.toFixed(2)}/g</div>
+          <div className={'infoTag'}>{powder.usage.join(', ')}</div>
+        </div>
 
-        <h4>{powder.brand.name} says:</h4>
-        <p>{powder.description}</p>
+        <div className={styles.container}>
+          <h4 className={'headText'}>{powder.brand.name} says:</h4>
+          <p>{powder.description}</p>
+        </div>
 
-        <h4>Reviews:</h4>
-        {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <div key={review.id} className={styles.review}>
-              <p>
-                <strong>{review.user}:</strong> {review.text}
-              </p>
-              <p>Rating: {review.rating}/5</p>
+        <div className={styles.container}>
+          <h4 className={'headText'}>Add Your Review:</h4>
+          <form onSubmit={handleSubmit} className={styles.reviewForm}>
+            <div className={styles.formElement}>
+              <label htmlFor="user">Name:</label>
+              <input
+                className={styles.input}
+                type="text"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+                required
+              />
             </div>
-          ))
-        ) : (
-          <p>No reviews available.</p>
-        )}
 
-        <h4>Add Your Review:</h4>
-        <form onSubmit={handleSubmit} className={styles.reviewForm}>
-          <div>
-            <label htmlFor="user">Name:</label>
-            <input
-              type="text"
-              id="user"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              required
-            />
+            <div className={styles.formElement}>
+              <label htmlFor="rating">Rating:</label>
+              <select
+                className={styles.input}
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
+              >
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <option key={star} value={star}>
+                    {star} Star{star > 1 ? 's' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.formElement}>
+              <label htmlFor="text">Review:</label>
+              <textarea
+                className={styles.reviewBox}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                required
+              />
+            </div>
+
+            <button type="submit" className={styles.button}>
+              Submit Review
+            </button>
+          </form>
+
+          {reviewStatus && <p>{reviewStatus}</p>}
+        </div>
+
+        <div className={styles.reviewContainer}>
+          <h4 className={'headText'}>Reviews:</h4>
+          <div className={styles.reviewList}>
+            {reviews.length > 0 ? (
+              reviews.map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <div className={styles.reviewTop}>
+                    <p className={styles.user}>{review.user}</p>
+                    <div className={styles.rating}>{review.rating} ★</div>
+                  </div>
+                  <p className={styles.text}>{review.text}</p>
+                </div>
+              ))
+            ) : (
+              <p>No reviews available.</p>
+            )}
           </div>
-
-          <div>
-            <label htmlFor="text">Review:</label>
-            <textarea
-              id="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="rating">Rating:</label>
-            <select
-              id="rating"
-              value={rating}
-              onChange={(e) => setRating(Number(e.target.value))}
-            >
-              {[1, 2, 3, 4, 5].map((star) => (
-                <option key={star} value={star}>
-                  {star} Star{star > 1 ? 's' : ''}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <button type="submit">Submit Review</button>
-        </form>
-
-        {reviewStatus && <p>{reviewStatus}</p>}
+        </div>
       </div>
     </div>
   );

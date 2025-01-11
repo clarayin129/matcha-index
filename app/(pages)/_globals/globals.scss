@@ -5,10 +5,12 @@
     --base-green: #559575;
 
     --primary: var(--base-green);
-    --secondary: #99D3B7;
+    --secondary: #8dbfa7;
     --light-background: #CEE4D7;
     --dark-background: #559575;
     --med-blue: #85a3e4;
+    --light-blue: #b0c6f5;
+    --card-background: rgb(228, 239, 239);
 
     --text-dark: #1D623F;
     --text-light: #C3F2D5;
@@ -64,4 +66,26 @@ p {
   font-style: italic;
   font-weight: 100;
   letter-spacing: 1px;
+  }
+
+  .brandTag {
+    border-radius: 25px;
+    color: white;
+    background-color: var(--base-green);
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    width: fit-content;
+    height: fit-content;
+    flex-shrink: 0;
+  }
+  
+  .infoTag {
+    border-radius: 25px;
+    color: white;
+    background-color: var(--med-blue);
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    width: fit-content;
+    height: fit-content;
+    flex-shrink: 0;
   }
