@@ -8,11 +8,11 @@
       "slug": "/powders"
     },
     {
-      "name": "Examples",
-      "slug": "/examples"
+      "name": "Info",
+      "slug": "/info"
     },
     {
-      "name": "Contact Us",
-      "slug": "/contact"
+      "name": "About",
+      "slug": "/about"
     }
   ]
