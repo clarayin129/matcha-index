@@ -12,7 +12,7 @@ type PopupProps = {
   powder: PowderProps | null;
 };
 
-const ADD_REVIEW_MUTATION = gql`
+const addReview = gql`
   mutation addReview($powderId: ID!, $input: ReviewInput!) {
     addReview(powderId: $powderId, input: $input) {
       id
@@ -23,50 +23,84 @@ const ADD_REVIEW_MUTATION = gql`
   }
 `;
 
+const findReviews = gql`
+  query powder($name: String!) {
+    powder(name: $name) {
+      reviews {
+        id
+        user
+        text
+        rating
+      }
+    }
+  }
+`;
+
 const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
   const [user, setUser] = useState('');
   const [text, setText] = useState('');
-  const [rating, setRating] = useState(1); // Default rating to 1
+  const [rating, setRating] = useState(1);
   const [reviews, setReviews] = useState(powder?.reviews || []);
   const [reviewStatus, setReviewStatus] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const refetchReviews = async (name: string) => {
+    try {
+      const { data } = await sendApolloRequest(
+        findReviews,
+        { name },
+        { path: '/powders' }
+      );
+      setReviews(data.powder.reviews);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await sendApolloRequest(ADD_REVIEW_MUTATION, {
-        powderId: powder?.id,
-        input: {
-          user,
-          text,
-          rating,
+      const response = await sendApolloRequest(
+        addReview,
+        {
+          powderId: powder?.id,
+          input: {
+            user,
+            text,
+            rating,
+          },
         },
-      });
+        { path: '/powders' }
+      );
 
       if (response.addReview) {
-        setReviews([...reviews, response.createReview]);
         setUser('');
         setText('');
         setRating(1);
         setReviewStatus('Review submitted successfully!');
+        await refetchReviews(powder?.name || '');
       }
     } catch (error) {
       console.error('Error creating review:', error);
       setReviewStatus('Error submitting review. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   if (!isOpen || !powder) return null;
-
   return (
     <div className={styles.overlay}>
       <div className={styles.popup}>
         <div className={styles.top}>
           <h3 className={'headText'}>{powder.name}</h3>
           <button onClick={onClose} className={styles.closeButton}>
-            X
+            x
           </button>
         </div>
+
         <div className={styles.tagContainer}>
           <div className={'brandTag'}>{powder.brand.name}</div>
           <div className={'infoTag'}>{powder.strength}</div>
@@ -90,6 +124,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
                 value={user}
                 onChange={(e) => setUser(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
@@ -99,6 +134,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
                 className={styles.input}
                 value={rating}
                 onChange={(e) => setRating(Number(e.target.value))}
+                disabled={loading}
               >
                 {[1, 2, 3, 4, 5].map((star) => (
                   <option key={star} value={star}>
@@ -115,11 +151,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
-            <button type="submit" className={styles.button}>
-              Submit Review
+            <button type="submit" className={styles.button} disabled={loading}>
+              {loading ? 'Submitting...' : 'Submit Review'}
             </button>
           </form>
 

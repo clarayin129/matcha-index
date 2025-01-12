@@ -29,7 +29,9 @@
   
   .closeButton {
     border: none;
-    background: transparent;
+    background-color: white;
+    padding: 4px 12px;
+    border-radius: 24px;
     font-size: 20px;
     cursor: pointer;
   }
@@ -103,6 +105,7 @@
     background-color: var(--base-green);
     color: white;
     border-radius: 25px;
+    cursor: pointer;
   }
 
   .review {
