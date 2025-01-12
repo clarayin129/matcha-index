@@ -1,8 +1,9 @@
 .body {
     display: flex;
-    padding: 50px;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     min-width: 100vw;
+    padding: 50px;
 }

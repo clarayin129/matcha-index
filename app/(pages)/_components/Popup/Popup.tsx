@@ -109,6 +109,8 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
           <div className={'infoTag'}>{powder.usage.join(', ')}</div>
         </div>
 
+        <hr className={styles.divider}></hr>
+
         <div className={styles.container}>
           <h4 className={'headText'}>{powder.brand.name} says:</h4>
           <p>{powder.description}</p>

@@ -46,7 +46,7 @@ const PowderSearch: React.FC<PowderSearchProps> = ({ initialPowders }) => {
         className={styles.search}
       />
 
-      <div>search by:</div>
+      <div>in addition to name, you can search by:</div>
 
       <div className={styles.infoContainer}>
         <div className={styles.infoLine}>
