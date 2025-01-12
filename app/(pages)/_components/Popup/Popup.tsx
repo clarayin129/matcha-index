@@ -49,7 +49,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
       const { data } = await sendApolloRequest(
         findReviews,
         { name },
-        { path: '/powders' }
+        { tag: `powder-${powder?.id}` }
       );
       setReviews(data.powder.reviews);
     } catch (error) {
@@ -72,10 +72,11 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
             rating,
           },
         },
-        { path: '/powders' }
+        { tag: `powder-${powder?.id}` }
       );
 
-      if (response.addReview) {
+      if (response.data.addReview) {
+        setReviews((prevReviews) => [...prevReviews, response.data.addReview]);
         setUser('');
         setText('');
         setRating(1);
