@@ -30,7 +30,7 @@ const fetchPowders = async () => {
   return data?.powders || [];
 };
 
-export default async function Example() {
+export default async function PowderPage() {
   const powders = await fetchPowders();
 
   if (!powders || powders.length === 0) {
