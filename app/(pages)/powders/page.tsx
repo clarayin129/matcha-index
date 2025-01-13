@@ -3,7 +3,7 @@ import sendApolloRequest from '@utils/sendApolloRequest';
 import PowderSearch from './_components/Example/PowderSearch';
 import styles from './page.module.scss';
 
-const query = gql`
+const powderQuery = gql`
   query getAllPowders {
     powders {
       id
@@ -26,7 +26,11 @@ const query = gql`
 `;
 
 const fetchPowders = async () => {
-  const { data } = await sendApolloRequest(query, {}, { path: '/powders' });
+  const { data } = await sendApolloRequest(
+    powderQuery,
+    {},
+    { path: '/powders' }
+  );
   return data?.powders || [];
 };
 
