@@ -27,10 +27,10 @@ const query = gql`
 
 const fetchPowders = async () => {
   const { data } = await sendApolloRequest(query, {}, { path: '/powders' });
-  return data?.powders || [];
+  return data.powders || [];
 };
 
-export default async function Example() {
+export default async function PowderPage() {
   const powders = await fetchPowders();
 
   if (!powders || powders.length === 0) {
