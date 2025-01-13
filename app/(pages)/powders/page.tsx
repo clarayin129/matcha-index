@@ -26,12 +26,22 @@ const query = gql`
 `;
 
 const fetchPowders = async () => {
-  const { data } = await sendApolloRequest(query, {});
+  const { data } = await sendApolloRequest(query, {}, { path: '/powders' });
   return data?.powders || [];
 };
 
 export default async function Example() {
   const powders = await fetchPowders();
+
+  if (!powders || powders.length === 0) {
+    return (
+      <main>
+        <div className={styles.body}>
+          <p>No powders found</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main>
