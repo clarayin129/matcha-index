@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import styles from './Powder.module.scss';
 import Popup from '../Popup/Popup';

@@ -1,7 +1,10 @@
 import { gql } from 'graphql-tag';
 import sendApolloRequest from '@utils/sendApolloRequest';
-import PowderSearch from './_components/Example/PowderSearch';
 import styles from './page.module.scss';
+import { Suspense } from 'react';
+import SearchBar from './_components/Example/SearchBar';
+import PowderList from './_components/Example/PowderList';
+import { PowderProps } from '../_components/Powder/Powder';
 
 const powderQuery = gql`
   query getAllPowders {
@@ -25,7 +28,7 @@ const powderQuery = gql`
   }
 `;
 
-const fetchPowders = async () => {
+const fetchPowders = async (): Promise<PowderProps[]> => {
   const { data } = await sendApolloRequest(
     powderQuery,
     {},
@@ -34,24 +37,38 @@ const fetchPowders = async () => {
   return data?.powders || [];
 };
 
-export default async function PowderPage() {
+export default async function PowdersPage({
+  searchParams,
+}: {
+  searchParams: { search: string };
+}) {
   const powders = await fetchPowders();
+  const searchTerm = searchParams.search?.toLowerCase() || '';
 
-  if (!powders || powders.length === 0) {
-    return (
-      <main>
-        <div className={styles.body}>
-          <p>No powders found</p>
-        </div>
-      </main>
-    );
-  }
+  const filteredPowders =
+    searchTerm === ''
+      ? powders
+      : powders.filter((powder: PowderProps) => {
+          const matchesName = powder.name.toLowerCase().includes(searchTerm);
+          const matchesUsage = powder.usage.some((usage: string) =>
+            usage.toLowerCase().includes(searchTerm)
+          );
+          const matchesStrength = powder.strength
+            .toLowerCase()
+            .includes(searchTerm);
+          const matchesBrand = powder.brand.name
+            .toLowerCase()
+            .includes(searchTerm);
+
+          return matchesName || matchesUsage || matchesStrength || matchesBrand;
+        });
 
   return (
-    <main>
-      <div className={styles.body}>
-        <PowderSearch initialPowders={powders} />
-      </div>
+    <main className={styles.body}>
+      <SearchBar />
+      <Suspense fallback={<div>Loading powders...</div>}>
+        <PowderList powders={filteredPowders} />
+      </Suspense>
     </main>
   );
 }
