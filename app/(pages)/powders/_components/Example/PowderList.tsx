@@ -6,7 +6,7 @@ interface PowderListProps {
   powders: PowderProps[];
 }
 
-export default function PowderList({ powders }: PowderListProps) {
+export default async function PowderList({ powders }: PowderListProps) {
   if (!powders || powders.length === 0) {
     return <div>No powders found</div>;
   }
