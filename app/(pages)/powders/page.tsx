@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import SearchBar from './_components/Example/SearchBar';
 import PowderList from './_components/Example/PowderList';
 import { PowderProps } from '../_components/Powder/Powder';
+import { revalidatePath } from 'next/cache';
 
 const powderQuery = gql`
   query getAllPowders {
@@ -42,9 +43,9 @@ export default async function PowdersPage({
 }: {
   searchParams: { search: string };
 }) {
+  revalidatePath('/');
   const powders = await fetchPowders();
   const searchTerm = searchParams.search?.toLowerCase() || '';
-
   const filteredPowders =
     searchTerm === ''
       ? powders
