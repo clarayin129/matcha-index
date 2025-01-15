@@ -10,7 +10,6 @@ export default function PowderList({ powders }: PowderListProps) {
   return (
     <div className={styles.powderContainer}>
       {powders.map((powder) => (
-        // each Powder is a client component, but the list itself is server-side
         <Powder key={powder.id} powder={powder} />
       ))}
     </div>
