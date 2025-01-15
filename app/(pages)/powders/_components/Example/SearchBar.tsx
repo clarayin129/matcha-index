@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from './PowderSearch.module.scss';
+import styles from './SearchBar.module.scss';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function SearchBar() {
@@ -21,7 +21,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <h2 className={'headText'}>powder search</h2>
       <input
         type="text"

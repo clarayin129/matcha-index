@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './PowderSearch.module.scss';
+import styles from './PowderList.module.scss';
 import Powder, { PowderProps } from '../../../_components/Powder/Powder';
 
 interface PowderListProps {

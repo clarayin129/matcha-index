@@ -1,0 +1,47 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 80vw;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.powderContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 200px;
+    margin: 16px;
+}
+
+.search {
+    padding: 1rem;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 65vw;
+    box-sizing: border-box;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    max-width: 70vw;
+}
+
+.infoLine {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
