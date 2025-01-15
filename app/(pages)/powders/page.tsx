@@ -30,12 +30,8 @@ const powderQuery = gql`
 `;
 
 const fetchPowders = async (): Promise<PowderProps[]> => {
-  const { data } = await sendApolloRequest(
-    powderQuery,
-    {},
-    { path: '/powders' }
-  );
-  return data?.powders || [];
+  const { data } = await sendApolloRequest(powderQuery, {}, { path: '/' });
+  return data.powders || [];
 };
 
 export default async function PowdersPage() {
