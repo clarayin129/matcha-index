@@ -7,6 +7,9 @@ interface PowderListProps {
 }
 
 export default function PowderList({ powders }: PowderListProps) {
+  if (!powders || powders.length === 0) {
+    return <div>No powders found</div>;
+  }
   return (
     <div className={styles.powderContainer}>
       {powders.map((powder) => (
