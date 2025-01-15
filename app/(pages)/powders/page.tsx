@@ -31,7 +31,7 @@ const powderQuery = gql`
 
 const fetchPowders = async (): Promise<PowderProps[]> => {
   const { data } = await sendApolloRequest(powderQuery, {}, { path: '/' });
-  return data?.powders || [];
+  return data.powders || [];
 };
 
 export default async function PowdersPage({
@@ -64,7 +64,7 @@ export default async function PowdersPage({
     <main className={styles.body}>
       <SearchBar />
       <Suspense fallback={<div>Loading powders...</div>}>
-        <PowderList powders={filteredPowders} />
+        <PowderList powders={powders} />
       </Suspense>
     </main>
   );
