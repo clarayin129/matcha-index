@@ -30,41 +30,23 @@ const powderQuery = gql`
 `;
 
 const fetchPowders = async (): Promise<PowderProps[]> => {
-  const { data } = await sendApolloRequest(powderQuery, {}, { path: '/' });
+  const { data } = await sendApolloRequest(
+    powderQuery,
+    {},
+    { path: '/powders' }
+  );
   return data?.powders || [];
 };
 
-export default async function PowdersPage({
-  searchParams,
-}: {
-  searchParams: { search: string };
-}) {
+export default async function PowdersPage() {
   revalidatePath('/');
   const powders = await fetchPowders();
-  const searchTerm = searchParams.search?.toLowerCase() || '';
-  const filteredPowders =
-    searchTerm === ''
-      ? powders
-      : powders.filter((powder: PowderProps) => {
-          const matchesName = powder.name.toLowerCase().includes(searchTerm);
-          const matchesUsage = powder.usage.some((usage: string) =>
-            usage.toLowerCase().includes(searchTerm)
-          );
-          const matchesStrength = powder.strength
-            .toLowerCase()
-            .includes(searchTerm);
-          const matchesBrand = powder.brand.name
-            .toLowerCase()
-            .includes(searchTerm);
-
-          return matchesName || matchesUsage || matchesStrength || matchesBrand;
-        });
 
   return (
     <main className={styles.body}>
       <SearchBar />
       <Suspense fallback={<div>Loading powders...</div>}>
-        <PowderList powders={filteredPowders} />
+        <PowderList powders={powders} />
       </Suspense>
     </main>
   );
