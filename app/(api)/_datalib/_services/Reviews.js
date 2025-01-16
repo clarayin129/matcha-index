@@ -1,4 +1,4 @@
-import prisma from '../_prisma/client.js';
+import prisma from '../_prisma/client.ts';
 
 export default class Reviews {
   static async createReview({ powderId, input }) {

@@ -1,4 +1,4 @@
-import prisma from '../_prisma/client.js';
+import prisma from '../_prisma/client.ts';
 
 export default class Powders {
   static async find({ name }) {
