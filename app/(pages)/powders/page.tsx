@@ -64,7 +64,9 @@ export default async function PowdersPage({
     <main className={styles.body}>
       <SearchBar />
       <Suspense fallback={<div>Loading powders...</div>}>
-        <PowderList powders={filteredPowders} />
+        <div className={styles.powderList}>
+          <PowderList powders={filteredPowders} />
+        </div>
       </Suspense>
     </main>
   );

@@ -1,9 +1,17 @@
 .body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     min-width: 100vw;
     padding: 50px;
+}
+
+.powderList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
 }

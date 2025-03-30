@@ -96,14 +96,16 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
     <div className={styles.overlay}>
       <div className={styles.popup}>
         <div className={styles.top}>
-          <h3 className={'headText'}>{powder.name}</h3>
+          <div className={styles.topText}>
+            <div className={'brandText'}>{powder.brand.name} </div>
+            <h3 className={'headText'}>{powder.name}</h3>
+          </div>
           <button onClick={onClose} className={styles.closeButton}>
             x
           </button>
         </div>
 
         <div className={styles.tagContainer}>
-          <div className={'brandTag'}>{powder.brand.name}</div>
           <div className={'infoTag'}>{powder.strength}</div>
           <div className={'infoTag'}>${powder.pricePerGram.toFixed(2)}/g</div>
           <div className={'infoTag'}>{powder.usage.join(', ')}</div>

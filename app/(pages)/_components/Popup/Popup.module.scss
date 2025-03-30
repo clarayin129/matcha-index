@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 0px 10px;
+    margin: 6px 10px;
   }
 
   .reviewTop {
@@ -54,6 +54,12 @@
     justify-content: space-between;
     align-items: center;
     margin: 0px 10px;
+  }
+
+  .topText {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tiny-spacer);
   }
 
   .container > * {
@@ -86,6 +92,7 @@
     padding: 4px;
     border: none;
     border-radius: 4px;
+    border: 1px solid #CEE4D7;
   }
 
   .reviewBox {
@@ -95,17 +102,19 @@
     border: none;
     border-radius: 4px;
     overflow-y: scroll;
+    border: 1px solid #CEE4D7;
   }
 
   .button {
     width: fit-content;
     height: fit-content;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: var(--base-green);
     color: white;
-    border-radius: 25px;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 1rem;
   }
 
   .review {
@@ -118,6 +127,7 @@
     padding: 20px;
     height: auto;
     box-sizing: border-box;
+    border: 1px solid #CEE4D7;
   }
   
   .reviewList {
@@ -153,8 +163,8 @@
     margin: 10px 0px;
   }
 
-  .divider{
-    border-top: 1.5px solid var(--text-dark);
+  .divider {
+    border-top: 1.5px solid var(--text-sub);
     margin-top: 12px;
     width: 100%;
   }
