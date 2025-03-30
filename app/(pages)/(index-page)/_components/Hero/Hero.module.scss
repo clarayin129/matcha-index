@@ -3,6 +3,7 @@
 .container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     height: calc(100vh - var(--navbar-height));
     width: 100%;
@@ -10,34 +11,6 @@
     padding: var(--large-spacer);
     @include mixins.phone {
         padding: var(--medium-spacer);
-    }
-
-    .img_container {
-        width: 50%;
-        height: 100%;
-        background-color: #588764;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: var(--medium-spacer);
-    }
-
-    .welcome {
-        width: 50%;
-        max-width: 1620px;
-        height: 100%;
-        border-radius: var(--b-radius);
-        border: solid 2px var(--light-background);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: var(--spacer);
-        opacity: 1;
-
-        > h1 {
-            color: var(--text-light);
-        }
     }
 }
 
@@ -55,27 +28,17 @@
   }
 
 .bigText {
-    font-family: var(--font-playfair-italic);
     font-style: italic;
-    font-weight: 100;
+    font-weight: 300;
     letter-spacing: 1px;
     font-size: 8rem;
 }
 
-.text {
-    font-family: var(--font-playfair-italic);
-    color: var(--text-light);
-    font-style: italic;
-    font-weight: 100;
-    letter-spacing: 1px;
-    font-size: 3rem;
-}
-
 a.button {
     padding: 1px 6px;
-    border: 1px solid  var(--text-light);
-    border-radius: 25px;
-    color: var(--text-light);
+    border: 1px solid var(--text-dark);
+    border-radius: 30px;
+    color: var(--text-dark);
     background-color: transparent;
     text-decoration: none;
     margin: 16px;

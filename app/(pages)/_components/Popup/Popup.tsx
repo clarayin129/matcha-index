@@ -44,6 +44,17 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
   const [reviewStatus, setReviewStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const getStrengthColor = (strength: string) => {
+    switch (strength.toLowerCase()) {
+      case 'light':
+        return styles.light;
+      case 'medium':
+        return styles.medium;
+      case 'rich':
+        return styles.rich;
+    }
+  };
+
   const refetchReviews = async (name: string) => {
     try {
       const { data } = await sendApolloRequest(
@@ -106,7 +117,9 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, powder }) => {
         </div>
 
         <div className={styles.tagContainer}>
-          <div className={'infoTag'}>{powder.strength}</div>
+          <div className={`${'infoTag'} ${getStrengthColor(powder.strength)}`}>
+            {powder.strength}
+          </div>
           <div className={'infoTag'}>${powder.pricePerGram.toFixed(2)}/g</div>
           <div className={'infoTag'}>{powder.usage.join(', ')}</div>
         </div>

@@ -5,23 +5,20 @@ export default function Hero() {
   return (
     <div className={styles.container}>
       <div className={styles.text_overlay}>
-        <h4>welcome to</h4>
+        <h3>welcome to</h3>
         <h1 className={styles.bigText}>matcha</h1>
         <h1 className={styles.bigText}>index</h1>
+        <a href="../../powders" className={styles.button}>
+          <h4>find powders →</h4>
+        </a>
       </div>
-      <div className={styles.img_container}>
+      <div>
         <Image
           src="/index/matcha.jpg"
           fill
           alt="matcha"
-          style={{ objectFit: 'cover', opacity: '0.3' }} // Image opacity applied here
+          style={{ objectFit: 'cover', opacity: '0.3' }}
         />
-        <div className={styles.text_overlay}>
-          <h1 className={styles.text}>let's find a matcha!</h1>
-          <a href="../../powders" className={styles.button}>
-            find powders
-          </a>
-        </div>
       </div>
     </div>
   );

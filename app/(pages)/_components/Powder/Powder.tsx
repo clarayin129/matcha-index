@@ -32,18 +32,35 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
     setIsPopupOpen(false);
   };
 
+  const getStrengthColor = (strength: string) => {
+    switch (strength.toLowerCase()) {
+      case 'light':
+        return styles.light;
+      case 'medium':
+        return styles.medium;
+      case 'rich':
+        return styles.rich;
+    }
+  };
+
   return (
     <div>
       <div className={styles.card} onClick={handleCardClick}>
         <div className={styles.cardContainer}>
-          <div className={styles.bar}></div>
+          <div
+            className={`${styles.bar} ${getStrengthColor(powder.strength)}`}
+          ></div>
           <div className={styles.content}>
             <div className={styles.headText}>
               <div className={'brandText'}>{powder.brand.name} </div>
               <h3 className={'headText'}>{powder.name}</h3>
             </div>
             <div className={styles.tagContainer}>
-              <div className={'infoTag'}>{powder.strength}</div>
+              <div
+                className={`${'infoTag'} ${getStrengthColor(powder.strength)}`}
+              >
+                {powder.strength}
+              </div>
               <div className={'infoTag'}>
                 ${powder.pricePerGram.toFixed(2)}/g
               </div>

@@ -12,12 +12,27 @@
    align-items: center;
    text-align: center;
    overflow: hidden;
+   cursor: pointer;
 }
 
 .bar {
-  background-color: #799C84;
   width: 30px;
   height: 250px;
+}
+
+.light {
+  background-color: var(--light);
+  color: var(--text-dark);
+}
+
+.medium {
+  background-color: var(--medium);
+  color: white;
+}
+
+.rich {
+  background-color: var(--rich);
+  color: white;
 }
   
   .card:hover {

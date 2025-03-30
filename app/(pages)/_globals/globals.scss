@@ -2,12 +2,11 @@
 
 :root {
     /* variables */
-    --base-green: #559575;
+    --base-green: #799C84;
 
     --primary: var(--base-green);
     --secondary: #8dbfa7;
     --light-background: #EDF3F5;
-    --dark-background: #559575;
     --med-blue: #93AFDD;
     --light-blue: #b0c6f5;
     --card-background: #FBFFFC;
@@ -15,6 +14,10 @@
     --text-dark: #334436;
     --text-light: #C3F2D5;
     --text-sub: #7A937E;
+
+    --light: #CEE4D7;
+    --medium: #A1C0AB;
+    --rich: #799C84;
 
     /* spacers */
     --tiny-spacer: 8px;
