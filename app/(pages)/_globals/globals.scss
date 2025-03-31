@@ -12,7 +12,7 @@
     --card-background: #FBFFFC;
 
     --text-dark: #334436;
-    --text-light: #C3F2D5;
+    --text-light: #CEE4D7;
     --text-sub: #7A937E;
 
     --light: #CEE4D7;
@@ -30,7 +30,7 @@
     --b-radius: 8px;
 
     /* navbar */
-    --navbar-height: 80px;
+    --navbar-height: 60px;
 
     background-color: var(--light-background);
 }
@@ -65,6 +65,14 @@ h4 {
 p {
     font-size: 1rem;
 }
+
+.logoText {
+  font-family: var(--font-inter);
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  color: var(--text-light);
+  }
 
 .headText {
   font-family: var(--font-inter);

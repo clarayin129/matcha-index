@@ -22,7 +22,6 @@ export default function SearchBar() {
 
   return (
     <div className={styles.body}>
-      <h2 className={'headText'}>powder search</h2>
       <input
         type="text"
         placeholder="Search powders..."

@@ -1,15 +1,7 @@
 [
     {
-      "name": "Home",
-      "slug": "/"
-    },
-    {
       "name": "Powders",
       "slug": "/powders"
-    },
-    {
-      "name": "Info",
-      "slug": "/info"
     },
     {
       "name": "About",

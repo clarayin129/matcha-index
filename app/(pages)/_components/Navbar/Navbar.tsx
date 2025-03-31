@@ -19,7 +19,9 @@ export default function Navbar({ navLinks }: { navLinks: NavLink[] }) {
   return (
     <div className={styles.relative_wrapper}>
       <div className={styles.container}>
-        <h2 className={'headText'}>matcha index</h2>
+        <Link href="/" className={'logoText'}>
+          matcha index
+        </Link>
         <div className={styles.nav_container}>
           <div className={`${styles.links} ${active ? styles.active : null}`}>
             {navLinks.map((link) => {

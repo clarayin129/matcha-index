@@ -62,7 +62,10 @@ export default async function PowdersPage({
 
   return (
     <main className={styles.body}>
-      <SearchBar />
+      <div className={styles.searchContainer}>
+        <h2 className={'headText'}>powder search</h2>
+        <SearchBar />
+      </div>
       <Suspense fallback={<div>Loading powders...</div>}>
         <div className={styles.powderList}>
           <PowderList powders={filteredPowders} />
