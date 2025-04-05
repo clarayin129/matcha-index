@@ -1,7 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Powder.module.scss';
 import Popup from '../Popup/Popup';
+import { isFavorite, toggleFavorite } from '@utils/favorites';
 
 export type Review = {
   id: string;
@@ -23,6 +24,11 @@ export type PowderProps = {
 
 const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [favorited, setFavorited] = useState(false);
+
+  useEffect(() => {
+    setFavorited(isFavorite(powder.id));
+  }, [powder.id]);
 
   const handleCardClick = () => {
     setIsPopupOpen(true);
@@ -30,6 +36,12 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const nowFavorite = toggleFavorite(powder.id);
+    setFavorited(nowFavorite);
   };
 
   const getStrengthColor = (strength: string) => {
@@ -54,6 +66,9 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
             <div className={styles.headText}>
               <div className={'brandText'}>{powder.brand.name} </div>
               <h3 className={'headText'}>{powder.name}</h3>
+              <button onClick={handleFavoriteClick}>
+                {favorited ? 'fav' : 'not fav'}
+              </button>
             </div>
             <div className={styles.tagContainer}>
               <div
