@@ -3,8 +3,9 @@
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
    transition: 0.3s;
    border-radius: 15px;
-   width: 250px;
+   width: 275px;
    height: 250px;
+   padding: 10px 20px 10px 0px;
    box-sizing: border-box;
    display: flex;
    flex-direction: row;
@@ -75,4 +76,28 @@
   flex-direction: column;
   text-align: left;
   gap: var(--tiny-spacer);
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.favoriteIcon {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

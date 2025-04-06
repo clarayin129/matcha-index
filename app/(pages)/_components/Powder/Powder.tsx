@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Powder.module.scss';
 import Popup from '../Popup/Popup';
 import { isFavorite, toggleFavorite } from '@utils/favorites';
+import Image from 'next/image';
 
 export type Review = {
   id: string;
@@ -64,11 +65,28 @@ const Powder: React.FC<{ powder: PowderProps }> = ({ powder }) => {
           ></div>
           <div className={styles.content}>
             <div className={styles.headText}>
-              <div className={'brandText'}>{powder.brand.name} </div>
+              <div className={styles.top}>
+                <div className={'brandText'}>{powder.brand.name} </div>
+                <button
+                  onClick={handleFavoriteClick}
+                  className={styles.favoriteButton}
+                >
+                  <Image
+                    src={
+                      favorited
+                        ? '/icons/Vectorheart_filled.png'
+                        : '/icons/Vectorheart.png'
+                    }
+                    alt={
+                      favorited ? 'Remove from favorites' : 'Add to favorites'
+                    }
+                    width={32}
+                    height={28}
+                    className={styles.favoriteIcon}
+                  />
+                </button>
+              </div>
               <h3 className={'headText'}>{powder.name}</h3>
-              <button onClick={handleFavoriteClick}>
-                {favorited ? 'fav' : 'not fav'}
-              </button>
             </div>
             <div className={styles.tagContainer}>
               <div
