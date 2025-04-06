@@ -14,11 +14,6 @@
         text-align: center;
         background-color: var(--primary);
         color: var(--text-light);
-        @include mixins.phone {
-            background: none;
-            margin-bottom: var(--medium-spacer);
-            color: var(--text-dark);
-        }
     }
 }
 

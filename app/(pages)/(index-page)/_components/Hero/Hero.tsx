@@ -8,8 +8,9 @@ export default function Hero() {
         <h3>welcome to</h3>
         <h1 className={styles.bigText}>matcha</h1>
         <h1 className={styles.bigText}>index</h1>
+        <h4>find a matcha powder that suits your needs!</h4>
         <a href="../../powders" className={styles.button}>
-          <h4>find powders →</h4>
+          <h4>let's go →</h4>
         </a>
       </div>
       <div>
